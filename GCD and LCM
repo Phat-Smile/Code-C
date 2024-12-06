@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+//Ham UCLN (GCD)
+int gcd(int n, int m) {
+	int change;
+	if (n==0 || m==0)
+		return m+n;
+	while(m!=0) {
+		change = n % m;
+		n = m;
+		m = change;
+	}
+	return n;
+}
+//Ham BCNN(LCM)
+int lcm (int a, int b) {
+	int bcnn;
+	bcnn = ((a*b) / gcd(a,b));
+	return bcnn;
+}
+int main() {
+	int n,m;
+	printf("Mhap n = ");
+	scanf("%d",&n);
+	printf("Mhap n = ");
+	scanf("%d",&m);
+	printf("GCD is: %d\n",gcd(n,m));
+	printf("LCM is: %d",lcm(n,m));
+	return 0;
+}
