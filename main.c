@@ -1,10 +1,20 @@
 #include <stdio.h>
 #include <math.h>
 ///Ham tim ra snt
-int snt(int n) {
-	for (int i=2; i<=sqrt(n); i++)
-		if (n % i == 0) return 0;
-	return 1;
+void snt(int n) {
+	printf("%d = ",n);
+	while (n % 2 ==0) {
+		printf("2");
+		n = n / 2;
+		if (n>1) printf(" * ");
+	}
+	for (int i=3; i<=sqrt(n); i+=2)
+		while (n % i ==0) {
+			printf("%d ",i);
+			n = n / i;
+			 if (n>1) printf("* ");
+		}
+	if (n>2) printf("%d",n);
 }
 
 // Function main
@@ -17,20 +27,11 @@ int main() {
 		scanf("%d",&n);
 		if (n<=0) printf("Vui long nhap lai n\n");
 	} while(n<=0);
-    m=n;
-    
-	if (snt(n)==1)
-		printf("%d = 1 * %d ",n,n);
-	else {
-		while (n>0) {
-			if ((snt(i)==1) && (n % i ==0)) {
-				printf("%d ",i);
-				n = n / i;
-			} else
-				i++;
-			if (i>n) break;	
-		}
-	}
-	printf("= %d",m);
+
+	if (n>1)
+		snt(n);
+	else
+		printf("Bo nho bi tran");
+
 	return 0;
 }
