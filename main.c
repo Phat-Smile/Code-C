@@ -3,18 +3,22 @@
 ///Ham tim ra snt
 void snt(int n) {
 	printf("%d = ",n);
-	while (n % 2 ==0) {
-		printf("2");
-		n = n / 2;
-		if (n>1) printf(" * ");
-	}
-	for (int i=3; i<=sqrt(n); i+=2)
+
+	for (int i=2; i<=sqrt(n); i++) {
+		int d=0;
 		while (n % i ==0) {
-			printf("%d ",i);
 			n = n / i;
-			 if (n>1) printf("* ");
+			d++;
 		}
-	if (n>2) printf("%d",n);
+
+		if (d>=1) {
+			printf("%d^%d",i,d);
+			if (n>1) {
+				printf(" * ");
+			}
+		}
+	}
+	if (n>2) printf("%d^1",n);
 }
 
 // Function main
@@ -28,10 +32,6 @@ int main() {
 		if (n<=0) printf("Vui long nhap lai n\n");
 	} while(n<=0);
 
-	if (n>1)
-		snt(n);
-	else
-		printf("Bo nho bi tran");
-
+snt(n);
 	return 0;
 }
